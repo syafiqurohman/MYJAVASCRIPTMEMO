@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JS Control Browser Murtiple</title>
+    <style>
+        #circle {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: cadetblue;
+            border-radius: 50%;
+        }
+        #circle2 {
+            position: fixed;
+            margin-left: 25px;
+            width: 100px;
+            height: 100px;
+            background: turquoise;
+            border-radius: 50%;
+        }
+        #circle3 {
+            position: fixed;
+            margin-left: 50px;
+            width: 100px;
+            height: 100px;
+            background: rgb(219, 30, 30);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1> Learn JS</h1>
+    <div id="circle"></div>
+    <div id="circle2"></div>
+    <div id="circle3"></div>
+    <script>
+        const circleChannel = new BroadcastChannel("circle_channel")
+        const circleChannel2 = new BroadcastChannel("circle_channel2")
+        const circleChannel3 = new BroadcastChannel("circle_channel3")
+        
+        const circle = document.getElementById("circle")
+        const circle2 = document.getElementById("circle2")
+        const circle3 = document.getElementById("circle3")
+
+
+        function circleMovement(event) {
+            const x = event.clientX, y = event.clientY
+             
+            circle.style.left = x + "px"
+            circle.style.right = ""
+            circle.style.top = y + "px"
+
+            circle2.style.left = x + "px"
+            circle2.style.right = ""
+            circle2.style.top = y + "px"
+
+            circle3.style.left = x + "px"
+            circle3.style.right = ""
+            circle3.style.top = y + "px"
+
+            circleChannel.postMessage({ x, y })
+            circleChannel2.postMessage({ x, y })
+            circleChannel3.postMessage({ x, y })
+
+
+        }
+
+            circleChannel.onmessage = (event) => {
+                const {x, y} = event.data
+                circle.style.right = x + "px"
+                circle.style.left = "" 
+                circle.style.top = y + "px"
+            }
+
+            circleChannel2.onmessage = (event) => {
+                const {x, y} = event.data
+                circle2.style.right = x + "px"
+                circle2.style.left = "" 
+                circle2.style.top = y + "px"
+                circle2.style.marginRight = "25px"
+            }
+
+            circleChannel3.onmessage = (event) => {
+                const {x, y} = event.data
+                circle3.style.right = x + "px"
+                circle3.style.left = "" 
+                circle3.style.top = y + "px" 
+                circle3.style.marginRight = "50px"
+
+            }
+
+
+
+        addEventListener("mousemove", circleMovement)
+
+    </script>
+</body>
+</html>

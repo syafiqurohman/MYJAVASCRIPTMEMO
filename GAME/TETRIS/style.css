@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&display=swap');
+
+
+body{
+    background: #EADFB4;
+    color: #0E185F;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 2em;
+    text-align: center;
+}
+
+canvas{
+    border: solid 0.2em #0E185F;
+    height: 90vh;
+}

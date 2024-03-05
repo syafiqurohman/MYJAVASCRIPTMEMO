@@ -1,4 +1,4 @@
-const apiKey = 'your api key';
+const apiKey = 'a75e8594d85f729a0bd30e0f7529d2ae';
 const locButton = document.querySelector('.loc-button');
 const todayInfo = document.querySelector('.today-info');
 const todayWeatherIcon = document.querySelector('.today-weather i');
